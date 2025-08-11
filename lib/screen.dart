@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task/card_item.dart';
-import 'package:task/categories.dart';
+import 'package:task/category_item.dart';
+
+import 'category_screen.dart';
 
 class Screen extends StatelessWidget {
   const Screen({super.key});
@@ -15,7 +17,7 @@ class Screen extends StatelessWidget {
         price: "\$8.00",
         weight: "dozen",
         isAdd: false,
-        isLoved: false,
+
         color: Color(0xFFFECFBB),
         isViewed: false,
       ),
@@ -25,7 +27,7 @@ class Screen extends StatelessWidget {
         price: "\$7.00",
         weight: "2.0 lbs",
         isAdd: true,
-        isLoved: false,
+
         color: Color(0xFFFDFFDA),
         isViewed: true,
         textColor: Color(0xFFE5C47D),
@@ -37,7 +39,6 @@ class Screen extends StatelessWidget {
         price: "\$9.90",
         weight: "1.50 lbs",
         isAdd: false,
-        isLoved: true,
         color: Color(0xFFFECFBB),
         isViewed: false,
       ),
@@ -47,7 +48,7 @@ class Screen extends StatelessWidget {
         price: "\$7.05",
         weight: "5.0 lbs",
         isAdd: false,
-        isLoved: false,
+
         color: Color(0xFFFEE0EC),
         isViewed: true,
         isNew: false,
@@ -60,7 +61,7 @@ class Screen extends StatelessWidget {
         price: "\$2.09",
         weight: "1.50 lbs",
         isAdd: true,
-        isLoved: false,
+
         color: Color(0xFFFFE3E2),
         isViewed: true,
         textColor: Color(0xFFE5C47D),
@@ -72,7 +73,6 @@ class Screen extends StatelessWidget {
         price: "\$3.00",
         weight: "1 Kg",
         isAdd: false,
-        isLoved: true,
         color: Color(0xFFD0FFD0),
         isViewed: false,
       ),
@@ -136,18 +136,18 @@ class Screen extends StatelessWidget {
                         Opacity(
                           opacity: 0.9,
                           child: Image.asset(
-                            "assets/icons/banner.jpg",
+                            "assets/images/Mask Group.png",
                             fit: BoxFit.fill,
                           ),
                         ),
                         Positioned(
                           left: 35,
-                          top: 100,
+                          top: 150,
                           child: Text(
                             """20% off on your 
             first purchase """,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
@@ -165,9 +165,58 @@ class Screen extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-                    trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                    trailing: IconButton(
+                      padding: EdgeInsets.only(left: 20),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => CategoryScreen(),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.arrow_forward_ios),
+                      color: Colors.grey,
+                    ),
                   ),
-                  Categories.customRow(),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 120,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 65.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 64.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 63.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 62.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 61.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                        CategoryItem(
+                          imageUrl: "assets/images/Group 60.png",
+                          inGridPage: false,
+                          needContainer: false,
+                        ),
+                      ],
+                    ),
+                  ),
                   ListTile(
                     title: Text(
                       "Featured products",
